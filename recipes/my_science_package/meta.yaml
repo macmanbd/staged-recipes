@@ -1,0 +1,37 @@
+{% set name = "my_science_package" %}
+{% set version = "0.1.0" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  path: .
+
+build:
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  build:
+    - python
+    - pip
+  host:
+    - python
+    - pip
+  run:
+    - python
+    # Add other runtime dependencies here
+
+test:
+  imports:
+    - my_science_package
+
+about:
+  home: https://github.com/macmanbd/my_science_package
+  license: MIT
+  summary: 'A package for mechanical engineering equations'
+
+extra:
+  recipe-maintainers:
+    - macmanbd
